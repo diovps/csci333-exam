@@ -42,9 +42,11 @@ int main(int argc, char* argv[]){
 					if(wordList.count(word)>0){
 					    wordList[word] = wordList[word]+1;
 					}else{
-					    wordList.insert(
-					        std::pair<std::string,int>
-						(word,1));
+					    if(word.size()>0){
+					        wordList.insert(
+					            std::pair<std::string,int>
+						    (word,1));
+					    }
 					}
 				}
 			}	
@@ -70,7 +72,8 @@ int main(int argc, char* argv[]){
 		if(outfile.is_open()){
 		  outfile << "Unique Words: " << wordList.size() << "\n";
 		  outfile << "Lexical Diversity: " << 
-			wordCount/wordList.size() << "\n";
+			wordCount/(wordList.size()+0.0) << "\n";
+		  
 
 		  for(it2 = reverseMap.rbegin(); it2!=reverseMap.rend(); it2++){
 			 outfile << it2->second<<" "<<it2->first << "\n";
