@@ -43,9 +43,7 @@ int main(int argc, char* argv[]){
 					    wordList[word] = wordList[word]+1;
 					}else{
 					    if(word.size()>0){
-					        wordList.insert(
-					            std::pair<std::string,int>
-						    (word,1));
+					        wordList.insert(std::pair<std::string,int>(word,1));
 					    }
 					}
 				}

@@ -25,8 +25,7 @@ int main(int argc, char* argv[]){
 					}
 				}else{
 					if(line.size()>0){
-						totalList.insert(
-					   	    std::pair<std::string,int>							    (line,1));
+						totalList.insert(std::pair<std::string,int>(line,1));
 					}
 				}
 			}
