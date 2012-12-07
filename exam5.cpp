@@ -56,14 +56,27 @@ int main(int argc, char* argv[]){
 		std::map<std::string,int>::iterator it;
 		std::multimap<int, std::string>::reverse_iterator it2;
 
+		
+		int wordCount = 0;
 
 		for(it = wordList.begin(); it!=wordList.end(); it++){
 			reverseMap.insert(std::pair<int,std::string>
 			   (it->second,it->first));
+			wordCount+=it->second;
 		}
+		
+		std::ofstream outfile(argv[2]);
+		
+		if(outfile.is_open()){
+		  outfile << "Unique Words: " << wordList.size() << "\n";
+		  outfile << "Lexical Diversity: " << 
+			wordCount/wordList.size() << "\n";
 
-		for(it2 = reverseMap.rbegin(); it2!=reverseMap.rend(); it2++){
-			std::cout << it2->second<<" "<<it2->first << std::endl;
+		  for(it2 = reverseMap.rbegin(); it2!=reverseMap.rend(); it2++){
+			 outfile << it2->second<<" "<<it2->first << "\n";
+		  }
+
+		  outfile.close();
 		}
 
 	}
