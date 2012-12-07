@@ -3,7 +3,6 @@
 #include <vector>
 #include <fstream>
 #include <map>
-#include "BST.h"
 
 std::vector<std::string> split(std::string line){
 	
@@ -52,13 +51,21 @@ int main(int argc, char* argv[]){
 			myfile.close();
 		}
 		
+		std::multimap<int,std::string> reverseMap;
+
 		std::map<std::string,int>::iterator it;
-		BST<int>* sortedWords = new BST<int>();
+		std::multimap<int, std::string>::reverse_iterator it2;
+
 
 		for(it = wordList.begin(); it!=wordList.end(); it++){
-			sortedWords->insert(it->first,it->second);
+			reverseMap.insert(std::pair<int,std::string>
+			   (it->second,it->first));
 		}
-		sortedWords->print();
+
+		for(it2 = reverseMap.rbegin(); it2!=reverseMap.rend(); it2++){
+			std::cout << it2->second<<" "<<it2->first << std::endl;
+		}
+
 	}
 		
 	return 0;
